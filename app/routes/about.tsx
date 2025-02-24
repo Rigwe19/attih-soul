@@ -22,7 +22,7 @@ const About = () => {
                     <h1 className="font-bold md:text-8xl text-4xl md:leading-28 leading-12">ATTIH SOUL</h1>
                     <p className="font-medium md:text-xl text-sm leading-6">Singer, Songwriter, Guitarist, Vocal coach and Recording artist</p>
                 </div>
-                <div className="font-medium md:text-2xl md:leading-7 text-[#B8B8B8] md:tracking-[4.58px] tracking-[2px] text-justify flex flex-col gap-4 md:gap-12">
+                <div className="font-medium md:text-2xl md:leading-7 text-[#B8B8B8] md:tracking-[4.58px] tracking-[2px] text-left flex flex-col gap-4 md:gap-12">
                     <p className="">
                         Attih Soul is a Nigerian-born singer, songwriter, vocal coach, and acoustic guitarist whose captivating voice and soulful melodies have earned him recognition across continents. Currently based in the vibrant city of Barcelona, Spain, Attih’s artistry transcends cultural and musical boundaries, blending African roots with universal sounds to create timeless music.
                     </p>

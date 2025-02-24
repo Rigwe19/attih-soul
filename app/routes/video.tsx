@@ -3,12 +3,21 @@ import Footer from '~/components/footer'
 import Header from '~/components/header'
 import Nav from '~/components/nav'
 import VideoComponent from '~/components/video'
+import VideoComponents from '~/components/video-component'
+import type { Route } from './+types/video'
 
+export function meta({ }: Route.MetaArgs) {
+    return [
+        { title: "Attih Soul Videos" },
+        { name: "description", content: "Welcome to React Router!" },
+    ];
+}
 
 const videos = [
-    { title: 'Wetin', src: 'https://www.youtube.com/embed/sSnRPaDlRVw' },
-    { title: 'Friendzone', src: 'https://www.youtube.com/embed/_Qlk9ZaS1MQ' },
-    { title: "Someday I'll Find You", src: 'https://www.youtube.com/embed/Hn1s1kh-3pc' },
+    { title: 'Wetin', src: 'https://www.youtube.com/embed/sSnRPaDlRVw', video: '/videos/wetin.mp4' },
+    { title: 'Friendzone', src: 'https://www.youtube.com/embed/_Qlk9ZaS1MQ', video: '/videos/friendzone.mp4' },
+    { title: "Someday I'll Find You", src: 'https://www.youtube.com/embed/Hn1s1kh-3pc', video: '/videos/someday.mp4' },
+    { title: "Someday I'll Find You", src: 'https://youtu.be/O3vWnrgl_oI?si=WkSjd3UQpfh4x5-7', video: '/videos/someday.mp4' },
 ]
 const Video = () => {
     return (
@@ -16,7 +25,8 @@ const Video = () => {
 
             <Nav />
             <Header title='Video' />
-            {videos.map(video => <VideoComponent key={video.src} src={video.src} title={video.title} />)}
+            {/* <VideoComponents /> */}
+            {videos.map(video => <VideoComponents key={video.src} file={video} />)}
             <Booking />
             <Footer />
         </div >
