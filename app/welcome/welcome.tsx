@@ -3,14 +3,14 @@ import About from '~/components/about';
 import Nav from '~/components/nav';
 import HorizontalSlider from '~/components/slider';
 import Album from '~/components/album';
-import Video from '~/components/video';
+import VideoComponent from '~/components/video-component';
 import VideoSlider from '~/components/videoSlider';
 import Booking from '~/components/booking';
 import Footer from '~/components/footer';
 const videos = [
-  { title: 'Wetin', src: 'https://www.youtube.com/embed/sSnRPaDlRVw' },
-  { title: 'Friendzone', src: 'https://www.youtube.com/embed/_Qlk9ZaS1MQ' },
-  { title: "Someday I'll Find You", src: 'https://www.youtube.com/embed/Hn1s1kh-3pc' },
+  { title: 'Wetin', src: 'https://www.youtube.com/embed/sSnRPaDlRVw', video: '/videos/wetin.mp4' },
+  { title: 'Friendzone', src: 'https://www.youtube.com/embed/_Qlk9ZaS1MQ', video: '/videos/friendzone.mp4' },
+  { title: "Someday I'll Find You", src: 'https://www.youtube.com/embed/Hn1s1kh-3pc', video: '/videos/someday.mp4' },
 ]
 export function Welcome() {
   return (
@@ -30,7 +30,7 @@ export function Welcome() {
           <About />
           <HorizontalSlider />
           <Album />
-          {videos.map(video => <Video key={video.src} src={video.src} title={video.title} />)}
+          {videos.map(video => <VideoComponent key={video.src} file={video} />)}
           <VideoSlider />
           <Booking />
           <Footer />

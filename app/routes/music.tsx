@@ -20,44 +20,49 @@ const lists = [
         image: '/images/music/dreams.jpg'
     },
     {
-        title: 'say you love me',
+        title: 'Say You Love Me',
         href: 'https://music.apple.com/ng/album/say-you-love-me/1716933890?i=1716933899',
         image: '/images/music/say_you_love_me.jpg'
     },
     {
-        title: 'wetin',
+        title: 'Wetin',
         href: 'https://music.apple.com/ng/album/wetin/1716933890?i=1716933900',
         image: '/images/music/wetin.jpg'
     },
     {
-        title: 'SOMEDAY I WILL FIND YOU',
+        title: "Someday I'll Find You",
         href: 'https://music.apple.com/ng/album/dreams/1716933890?i=1716933901',
         image: '/images/music/someday_i_will_find_you.jpg'
     },
     {
-        title: 'friendzone',
-        href: 'https://music.apple.com/ng/album/dreams/1716933890?i=1716933901',
+        title: 'Friendzone',
+        href: 'https://music.apple.com/ng/album/friendzone/1716933890?i=1716933898',
         image: '/images/music/friendzone.jpg'
     },
     {
-        title: 'kiss ya',
-        href: 'https://music.apple.com/ng/album/dreams/1716933890?i=1716933901',
+        title: 'Kiss Ya',
+        href: 'https://music.apple.com/ng/album/kiss-ya/1716933890?i=1716933895',
         image: '/images/music/kiss_ya.jpg'
     },
     {
-        title: 'in the music',
-        href: 'https://music.apple.com/ng/album/dreams/1716933890?i=1716933901',
+        title: 'In The Music',
+        href: 'https://music.apple.com/ng/album/in-the-music/1716933890?i=1716933894',
         image: '/images/music/in_the_music.jpg'
     },
     {
-        title: 'down on my knees',
-        href: 'https://music.apple.com/ng/album/dreams/1716933890?i=1716933901',
-        image: '/images/music/down_on_my_knees.jpg'
+        title: 'Down On My Knees',
+        href: 'https://music.apple.com/ng/album/down-on-my-knees/1716933890?i=1716933892',
+        image: '/images/music/down_on_knees.jpg'
     },
     {
-        title: 'say something',
-        href: 'https://music.apple.com/ng/album/dreams/1716933890?i=1716933901',
+        title: 'Say Something',
+        href: 'https://music.apple.com/ng/album/say-something/1689607305?i=1689607607',
         image: '/images/music/say_something.jpg'
+    },
+    {
+        title: 'Karma',
+        href: 'https://music.apple.com/ng/album/karma/1495830198?i=1495830202',
+        image: '/images/music/karma.jpg'
     },
 ]
 const Music = () => {
@@ -74,7 +79,7 @@ const Music = () => {
                     <div className="flex justify-center items-center flex-col grow  gap-2.5">
                         <p className="font-open font-bold text-center md:text-lg text-xs uppercase tracking-[1.9px] leading-[24px]">GOOD OLD DAYS (Choir Version)</p>
 
-                        <Button className="border bg-transparent text-white not-md:h-auto not-md:p-1 not-md:w-5/6 w-40">Listen</Button>
+                        <a href="https://music.apple.com/ng/album/good-old-days-choir-version/1782173208?i=1782173419" target="_blank" className="border bg-transparent text-white not-md:h-auto not-md:p-1 not-md:w-5/6 w-40 flex justify-center py-2">Listen</a>
                     </div>
                 </div>
             </div>

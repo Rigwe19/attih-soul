@@ -25,9 +25,9 @@ const Booking: React.FC<Props> = ({ buttonClassName, className }) => {
             >
                 Book Now
             </Button>
-            <Portal>
+            {isOpen && <Portal>
                 <BookModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-            </Portal>
+            </Portal>}
         </div>
     );
 };

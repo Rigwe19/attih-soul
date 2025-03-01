@@ -36,7 +36,7 @@ const Nav: React.FC<Props> = ({ home = false }) => {
                             <nav className="p-4">
                                 <ul className="space-y-2 text-[24px] flex flex-col gap-[9px] overflow-y-auto">
                                     {links.map(link => <li key={link.name} className="text-[#F0E7DA] py-2 px-2.5 border-b border-[#656565]">
-                                        <NavLink to={`/${link.link}`} className="cursor-pointer">{link.name}</NavLink>
+                                        <NavLink viewTransition to={`/${link.link}`} className="cursor-pointer">{link.name}</NavLink>
                                     </li>)}
                                 </ul>
                             </nav>

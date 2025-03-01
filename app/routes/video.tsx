@@ -14,9 +14,9 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 const videos = [
-    { title: 'Wetin', src: 'https://www.youtube.com/embed/sSnRPaDlRVw', video: '/videos/wetin.mp4' },
-    { title: 'Friendzone', src: 'https://www.youtube.com/embed/_Qlk9ZaS1MQ', video: '/videos/friendzone.mp4' },
-    { title: "Someday I'll Find You", src: 'https://www.youtube.com/embed/Hn1s1kh-3pc', video: '/videos/someday.mp4' },
+    { title: 'Wetin', src: 'https://youtu.be/sSnRPaDlRVw', video: '/videos/wetin.mp4' },
+    { title: 'Friendzone', src: 'https://youtu.be/_Qlk9ZaS1MQ', video: '/videos/friendzone.mp4' },
+    { title: "Someday I'll Find You", src: 'https://youtu.be/Hn1s1kh-3pc', video: '/videos/someday.mp4' },
     { title: "Someday I'll Find You", src: 'https://youtu.be/O3vWnrgl_oI?si=WkSjd3UQpfh4x5-7', video: '/videos/someday.mp4' },
 ]
 const Video = () => {

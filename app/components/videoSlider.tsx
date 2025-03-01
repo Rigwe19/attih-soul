@@ -14,7 +14,7 @@ const VideoSlider = () => {
     const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
     return (
-        <section ref={containerRef} className="relative h-[534px]">
+        <section ref={containerRef} className="relative md:h-[534px] mb-6">
             <div className="sticky top-0 flex items-center overflow-hidden space-x-8">
                 <motion.div
                     style={{ x }}
@@ -32,15 +32,15 @@ const VideoSlider = () => {
                     {[1, 2, 3, 4, 5, 6, 7].map((item) => (
                         <motion.div
                             key={item}
-                            className="h-[253px] bg-center mx-4 relative cursor-grab bg-no-repeat bg-contain active:cursor-grabbing flex items-center justify-center flex-shrink-0"
+                            className="h-[253px] md:h-[534px] bg-center mx-4 relative cursor-grab bg-no-repeat bg-contain active:cursor-grabbing flex items-center justify-center flex-shrink-0"
                             // whileHover={{ scale: 1.02 }}
                             // whileTap={{ scale: 0.98 }}
-                            style={{ backgroundImage: `url(/images/gallery/gallery${item}.jpg)`, border: '1px dashed #ffffff' }}
+                            style={{ backgroundImage: `url(/images/gallery/gallery${item}.jpg)`, border: '2px dashed #ffffff' }}
                         >
                             <div className="absolute inset-0 bg-[#1E1E1E99]" />
                             <img
                                 src={`/images/gallery/gallery${item}.jpg`}
-                                className="h-[253px] w-auto invisible"
+                                className="h-[253px] md:h-[534px] w-auto invisible"
                                 alt={`Gallery ${item}`}
                             />
                         </motion.div>

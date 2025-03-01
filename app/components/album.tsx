@@ -1,59 +1,72 @@
+'use client';
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Portal } from 'react-portal';
 import Button from './button';
+import { useMediaQuery } from 'app/use-media'
 
 interface AlbumImage {
     id: number;
     src: string;
     alt: string;
+    name: string;
+    href: string;
 }
 
 const images: AlbumImage[] = [
-    { id: 1, src: '/images/album/album1.jpg', alt: 'Image 1' },
-    { id: 2, src: '/images/album/album2.jpg', alt: 'Image 2' },
-    { id: 3, src: '/images/album/album3.jpg', alt: 'Image 3' },
-    { id: 4, src: '/images/album/album4.jpg', alt: 'Image 4' },
+    { id: 1, src: '/images/album/shades.jpg', alt: 'Image 1', name: "Shades of Emotions", href: "https://music.apple.com/ng/album/shades-of-emotions/1716933890" },
+    // { id: 2, src: '/images/album/album2.jpg', alt: 'Image 2' },
+    // { id: 3, src: '/images/album/album3.jpg', alt: 'Image 3' },
+    // { id: 4, src: '/images/album/album4.jpg', alt: 'Image 4' },
 ];
 const Album = () => {
-    const [hoveredId, setHoveredId] = useState<number | null>(null);
-    const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-    const [selectedImage, setSelectedImage] = useState<AlbumImage | null>(null);
+    const isPhone = useMediaQuery("only screen and (max-width : 767px)")
+    // const [hoveredId, setHoveredId] = useState<number | null>(null);
+    // // const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+    // const [selectedImage, setSelectedImage] = useState<AlbumImage | null>(null);
 
-    const handleImageHovered = (image: AlbumImage, event: React.MouseEvent) => {
-        // const rect = event.currentTarget.getBoundingClientRect();
-        // setModalPosition({ top: rect.top, left: rect.left });
-        console.log(image.id)
-        setSelectedImage(image);
-        setHoveredId(image.id)
-    };
+    // const handleImageHovered = (image: AlbumImage | null, event: React.MouseEvent) => {
+    //     // const rect = event.currentTarget.getBoundingClientRect();
+    //     // setModalPosition({ top: rect.top, left: rect.left });
+    //     if (!isPhone) {
+    //         setSelectedImage(image);
+    //         setHoveredId(image !== null ? image.id : image)
+    //     }
+
+    // };
 
     return (
         <div className="w-full relative">
-            <div className="grid grid-cols-4 relative p-4 group hover:opacity-0 transition-all duration-1000">
+            <div className="grid md:grid-cols-3 grid-cols-1 relative p-4 md:transition-all md:duration-1000">
                 {images.map((image) => (
                     <motion.div
                         key={image.id}
-                        className="relative h-[725px]"
+                        className="relative md:h-[725px] w-full aspect-square group"
                         layout
-                        // initial={{ gridColumn: `${image.id} / span 1` }}
-                        onMouseEnter={(e) => handleImageHovered(image, e)}
-                        onMouseLeave={() => setHoveredId(null)}
+                    // initial={{ gridColumn: `${image.id} / span 1` }}
+                    // onMouseEnter={(e) => handleImageHovered(image, e)}
+                    // onMouseLeave={(e) => handleImageHovered(null, e)}
                     >
 
                         <motion.img
                             src={image.src}
                             alt={image.alt}
                             className="w-full h-full object-cover"
-                            // animate={{
-                            //     opacity: hoveredId === image.id ? 1 : 0.8
-                            // }}
-                            whileHover={{
-                                translateX: image.id > 2 ? '-50%' : '50%',
-                                opacity: 0
-                            }}
-                            transition={{ duration: 0.2 }}
+                        // animate={{
+                        //     opacity: hoveredId === image.id ? 1 : 0.8
+                        // }}
+                        // whileHover={{
+                        //     translateX: image.id > 2 ? '-50%' : '50%',
+                        //     opacity: 0
+                        // }}
+                        // transition={{ duration: 0.2 }}
                         />
+                        <div className="absolute w-full inset-0 flex transition-opacity duration-500 md:group-hover:opacity-100 md:opacity-0 justify-center mt-4">
+                            <div className="w-2/3 flex items-center justify-center flex-col gap-4">
+                                <p className="uppercase font-bold tracking-[2px] md:tracking-[4.3px]">{image.name}</p>
+                                <a href={image.href} className="border border-white text-white bg-transparent w-2/3 flex justify-center py-2">Stream Here</a>
+                            </div>
+                        </div>
                     </motion.div>
                 ))}
                 {/* {selectedImage && (
@@ -64,97 +77,159 @@ const Album = () => {
                 />
             )} */}
             </div>
-            {hoveredId === 1 && <motion.div className="grid grid-cols-4 p-4 absolute inset-0 z-10 pointer-events-none">
-                <motion.div
-                    animate={{
-                        opacity: 1
-                    }}
-                    initial={{
-                        opacity: 0
-                    }}
-                    transition={{ duration: 0.5 }}
-                    className="col-span-2 z-10 flex">
-                    <div className="w-1/2 relative pointer-events-auto"
-                        onMouseEnter={(e) => handleImageHovered(selectedImage!, e)}
-                    // onMouseLeave={(e) => setHoveredId(null)}
-                    >
-                        <img src="/images/album/album1.jpg" className="object-cover brightness-25 h-full" alt="" />
-                        <div className="absolute inset-0 flex items-center justify-center flex-col gap-4">
-                            <p className="uppercase">Album Name</p>
-                            <Button className="border border-white text-white bg-transparent w-2/3">Watch Here</Button>
+            {/* <AnimatePresence>
+                {hoveredId === 1 && <motion.div className="grid grid-cols-4 p-4 absolute inset-0 z-10 pointer-events-none">
+                    <motion.div
+                        animate={{
+                            opacity: 1
+                        }}
+                        initial={{
+                            opacity: 0
+                        }}
+                        transition={{ duration: 0.5 }}
+                        className="col-span-2 z-10 flex">
+                        <div className="w-1/2 relative pointer-events-auto"
+                            onMouseEnter={(e) => handleImageHovered(selectedImage!, e)}
+                            onMouseLeave={(e) => setHoveredId(null)}
+                        >
+                            <img src="/images/album/shades.jpg" className="object-cover brightness-25 h-full" alt="" />
+                            <div className="absolute inset-0 flex items-center justify-center flex-col gap-4">
+                                <p className="uppercase">Album Name</p>
+                                <Button className="border border-white text-white bg-transparent w-2/3">Watch Here</Button>
+                            </div>
                         </div>
-                    </div>
 
-                    <img src="/images/album/album1.jpg" className="w-1/2 h-full object-cover" alt="" />
-                </motion.div>
-                <motion.div
-                    animate={{
-                        translateX: '0',
-                        opacity: 0.5
-                    }}
-                    initial={{
-                        translateX: '-200%',
-                        opacity: 0
-                    }}
-                    transition={{ duration: 0.5 }} className="">
-                    <img src="/images/album/album3.jpg" className="w-full h-full object-cover" alt="" />
-                </motion.div>
-                <motion.div
-                    animate={{
-                        translateX: '0',
-                        opacity: 0.5
-                    }}
-                    initial={{
-                        translateX: '-200%',
-                        opacity: 0
-                    }} transition={{ duration: 0.5 }} className="">
-                    <img src="/images/album/album4.jpg" className="w-full h-full object-cover object-center]" alt="" />
-                </motion.div>
-            </motion.div>}
-            {hoveredId === 2 && <motion.div className="grid grid-cols-4 p-4 absolute inset-0 z-10 pointer-events-none">
-                <motion.div className=""></motion.div>
-                <motion.div
-                    animate={{
-                        opacity: 1,
-                        translateX: '0'
-                    }}
-                    initial={{
-                        opacity: 0,
-                        translateX: '50%'
-                    }}
-                    transition={{ duration: 0.5 }}
-                    className=" col-span-2 z-10"></motion.div>
-                <motion.div className=""></motion.div>
-            </motion.div>}
-            {hoveredId === 3 && <motion.div className="grid grid-cols-4 p-4 absolute inset-0 z-10 pointer-events-none">
-                <motion.div className=""></motion.div>
-                <motion.div className=""></motion.div>
-                <motion.div
-                    animate={{
-                        opacity: 1
-                    }}
-                    initial={{
-                        opacity: 0
-                    }}
-                    transition={{ duration: 0.5 }}
-                    className=" col-span-2 z-10"></motion.div>
-            </motion.div>}
-            {hoveredId === 4 && <motion.div className="grid grid-cols-4 p-4 absolute inset-0 z-10 pointer-events-none">
-                <motion.div className=""></motion.div>
-                <motion.div className=""></motion.div>
-                <motion.div
-                    animate={{
-                        opacity: 1
-                    }}
-                    initial={{
-                        opacity: 0
-                    }}
-                    transition={{ duration: 0.5 }}
-                    onMouseEnter={(e) => handleImageHovered(selectedImage!, e)}
-                    className=" col-span-2 z-0 flex items-center justify-end pr-6">
-                    {/* <Button className=" pointer-events-auto">Click Me</Button> */}
-                </motion.div>
-            </motion.div>}
+                        <img src="/images/album/shades.jpg" className="w-1/2 h-full object-cover" alt="" />
+                    </motion.div>
+                    <motion.div
+                        animate={{
+                            translateX: '0',
+                            opacity: 0.5
+                        }}
+                        initial={{
+                            translateX: '-200%',
+                            opacity: 0
+                        }}
+                        exit={{
+                            translateX: '-200%',
+                            opacity: 0
+                        }}
+                        onMouseEnter={(e) => handleImageHovered(selectedImage!, e)}
+                        onMouseLeave={(e) => setHoveredId(null)}
+                        transition={{ duration: 0.5 }} className="">
+                        <img src="/images/album/album3.jpg" className="w-full h-full object-cover" alt="" />
+                    </motion.div>
+                    <motion.div
+                        animate={{
+                            x: '0',
+                            opacity: 0.5
+                        }}
+                        exit={{
+                            x: '200%',
+                            opacity: 0
+                        }}
+                        initial={{
+                            x: '-200%',
+                            opacity: 0
+                        }} transition={{ duration: 0.5 }} className="">
+                        <img src="/images/album/album4.jpg" className="w-full h-full object-cover object-center]" alt="" />
+                    </motion.div>
+                </motion.div>}
+                {hoveredId === 2 && <motion.div className="grid grid-cols-4 p-4 absolute inset-0 z-10 pointer-events-none">
+                    <motion.div className="">
+                        <img src="/images/album/shades.jpg" className="object-cover h-full" alt="" />
+                    </motion.div>
+                    <motion.div
+                        animate={{
+                            opacity: 1,
+                            translateX: '0'
+                        }}
+                        initial={{
+                            opacity: 0,
+                            translateX: '50%'
+                        }}
+                        transition={{ duration: 0.5 }}
+                        className=" col-span-2 z-10 flex">
+
+                        <div className="w-1/2 relative pointer-events-auto"
+                            onMouseEnter={(e) => handleImageHovered(selectedImage!, e)}
+                            onMouseLeave={(e) => setHoveredId(null)}
+                        >
+                            <img src="/images/album/album2.jpg" className="object-cover brightness-25 h-full" alt="" />
+                            <div className="absolute inset-0 flex items-center justify-center flex-col gap-4">
+                                <p className="uppercase">Album Name</p>
+                                <Button className="border border-white text-white bg-transparent w-2/3">Watch Here</Button>
+                            </div>
+                        </div>
+
+                        <img src="/images/album/album2.jpg" className="w-1/2 h-full object-cover" alt="" />
+                    </motion.div>
+                    <motion.div className="">
+                        <img src="/images/album/album4.jpg" className="h-full object-cover" alt="" />
+                    </motion.div>
+                </motion.div>}
+                {hoveredId === 3 && <motion.div className="grid grid-cols-4 p-4 absolute inset-0 z-10 pointer-events-none">
+                    <motion.div className="">
+                        <img src="/images/album/shades.jpg" className="h-full object-cover" alt="" />
+                    </motion.div>
+                    <motion.div className="">
+                        <img src="/images/album/album2.jpg" className="h-full object-cover" alt="" />
+                    </motion.div>
+                    <motion.div
+                        animate={{
+                            opacity: 1
+                        }}
+                        initial={{
+                            opacity: 0
+                        }}
+                        transition={{ duration: 0.5 }}
+                        className=" col-span-2 z-10 flex">
+                        <div className="w-1/2 relative pointer-events-auto"
+                            onMouseEnter={(e) => handleImageHovered(selectedImage!, e)}
+                            onMouseLeave={(e) => setHoveredId(null)}
+                        >
+                            <img src="/images/album/album3.jpg" className="object-cover brightness-25 h-full" alt="" />
+                            <div className="absolute inset-0 flex items-center justify-center flex-col gap-4">
+                                <p className="uppercase">Album Name</p>
+                                <Button className="border border-white text-white bg-transparent w-2/3">Watch Here</Button>
+                            </div>
+                        </div>
+
+                        <img src="/images/album/album3.jpg" className="w-1/2 h-full object-cover" alt="" />
+                    </motion.div>
+                </motion.div>}
+                {hoveredId === 4 && <motion.div className="grid grid-cols-4 p-4 absolute inset-0 z-10 pointer-events-none">
+                    <motion.div className="">
+                        <img src="/images/album/shades.jpg" className="h-full object-cover" alt="" />
+                    </motion.div>
+                    <motion.div className="">
+                        <img src="/images/album/album2.jpg" className="object-cover  h-full" alt="" />
+                    </motion.div>
+                    <motion.div
+                        animate={{
+                            opacity: 1
+                        }}
+                        initial={{
+                            opacity: 0
+                        }}
+                        transition={{ duration: 0.5 }}
+                        onMouseEnter={(e) => handleImageHovered(selectedImage!, e)}
+                        className="col-span-2 z-0 flex items-center justify-end pr-6 w-full">
+
+                        <img src="/images/album/album4.jpg" className="w-1/2 h-full object-cover" alt="" />
+                        <div className="w-1/2 relative pointer-events-auto h-full"
+                            onMouseEnter={(e) => handleImageHovered(selectedImage!, e)}
+                            onMouseLeave={(e) => setHoveredId(null)}
+                        >
+                            <img src="/images/album/album4.jpg" className="object-cover brightness-25 h-full" alt="" />
+                            <div className="absolute inset-0 flex items-center justify-center flex-col gap-4">
+                                <p className="uppercase">Album Name</p>
+                                <Button className="border border-white text-white bg-transparent w-2/3">Watch Here</Button>
+                            </div>
+                        </div>
+                    </motion.div>
+                </motion.div>}
+            </AnimatePresence> */}
         </div>
     );
 };

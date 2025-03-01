@@ -13,7 +13,7 @@ type Props = {
 }
 const Footer = ({ buttonClassName, className }: Props) => {
     return (
-        <div className={cn('w-full flex flex-col bg-black gap-[59px] justify-center items-center md:p-10 px-1', className)}>
+        <div className={cn('w-full flex flex-col bg-black gap-[59px] justify-center items-center md:p-10 py-4 px-1', className)}>
             <div className="flex flex-col gap-7 max-w-[545px] w-full">
                 <p className="font-medium font-[13px] leading-[16.9px] tracking-[2px] text-center">Sign up for newsletter to get first news on new releases, shows and tours</p>
                 <div className="flex md:gap-1.5 gap-2.5 w-full">
@@ -33,7 +33,7 @@ const Footer = ({ buttonClassName, className }: Props) => {
                 </div>
                 <div className="flex justify-center items-center md:gap-6 gap-3 flex-wrap">
                     {links.map(link => <div key={link.name} className="flex gap-0.5 font-semibold">
-                        <Link to={`/${link.link}`}>{link.name}</Link>
+                        <Link to={`/${link.link}`} viewTransition>{link.name}</Link>
                         <span>|</span>
                     </div>)}
                 </div>

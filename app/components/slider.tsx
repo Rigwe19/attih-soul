@@ -14,7 +14,7 @@ const HorizontalSlider = () => {
     const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
     return (
-        <section ref={containerRef} className="relative h-[534px]">
+        <section ref={containerRef} className="relative md:h-[534px] h-[240px]">
             <div className="sticky top-0 flex items-center overflow-hidden">
                 <motion.div
                     style={{ x }}
@@ -32,14 +32,14 @@ const HorizontalSlider = () => {
                     {[1, 2, 3, 4, 5, 6, 7].map((item) => (
                         <motion.div
                             key={item}
-                            className="h-[534px] bg-center cursor-grab bg-no-repeat overflow-hidden bg-contain active:cursor-grabbing bg-gray-100 flex items-center justify-center flex-shrink-0"
+                            className="md:h-[534px] h-[240px] bg-center cursor-grab bg-no-repeat overflow-hidden bg-contain active:cursor-grabbing bg-gray-100 flex items-center justify-center flex-shrink-0"
                             whileHover={{ scale: 1.02 }}
                             // whileTap={{ scale: 0.98 }}
                             style={{ backgroundImage: `url(/images/gallery/gallery${item}.jpg)` }}
                         >
                             <img
                                 src={`/images/gallery/gallery${item}.jpg`}
-                                className="h-[534px] w-auto invisible"
+                                className="md:h-[534px] h-[240px] w-auto invisible"
                                 alt={`Gallery ${item}`}
                             />
                         </motion.div>

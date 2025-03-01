@@ -4,7 +4,7 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
+  ScrollRestoration
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -29,6 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"></meta>
         <Meta />
         <Links />
       </head>
@@ -39,6 +40,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </body>
     </html>
   );
+}
+const pageVariants = {
+  initial: { opacity: 0, y: 50 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  exit: { opacity: 0, y: -50, transition: { duration: 0.5 } },
 }
 
 export default function App() {
