@@ -28,8 +28,9 @@ const Services = () => {
                 <div className="flex gap-[47px] md:items-center flex-col md:flex-row">
                     <img src="/images/services/music.jpg" className='w-full md:w-2/3' alt="song writing" />
                     <div className="flex flex-col uppercase gap-5 max-w-sm">
-                        <h2 className="font-bold md:text-5xl text-xl md:leading-16 leading-5">MUSIC FOR EVENTS</h2>
+                        <h2 className="font-bold md:text-5xl text-xl md:leading-16 leading-5">MUSIC FOR CONCERTS AND EVENTS</h2>
                         <ul className="leading-6 tracking-[4.93px] list-disc list-inside text-xs md:text-base">
+                            <li>Concerts</li>
                             <li>Weddings</li>
                             <li>Parties</li>
                             <li>Private Events</li>

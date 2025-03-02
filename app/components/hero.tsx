@@ -28,7 +28,7 @@ const Hero = () => {
             <div className="relative z-10 flex items-center justify-center md:justify-end w-full h-full bg-black/50">
                 <div className="text-white px-4 w-[309px] gap-[26px] flex flex-col">
                     <p className="text-xs leading-[23px] font-normal text-center md:text-left uppercase tracking-[2px]">
-                        Attih Ekpenyong, known professionally as Attih Soul, is a Nigerian singer, songwriter, guitarist, and Performing artist with a passion for soulful melodies
+                        Attih Soul is a Nigerian singer, songwriter, guitarist, and Performing artist with a passion for soulful melodies
                     </p>
                     <Button onClick={()=>setIsOpen(true)} className='font-bold border-white border'>
                         BOOKINGS/INQUIRY

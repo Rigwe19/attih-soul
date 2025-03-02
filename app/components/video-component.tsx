@@ -27,7 +27,7 @@ const VideoComponent = ({ file }: Props) => {
 
     return (
         <button className="relative w-full mb-4" onTouchStart={handleMobile} onMouseEnter={() => handlePlay('play')} onMouseLeave={() => handlePlay('pause')}>
-            <video className="w-full" ref={video} loop src={file.video}></video>
+            <video className="w-full" ref={video} loop src={file.video} playsInline></video>
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 max-w-48 w-full gap-2 flex flex-col">
                 <p className="font-open font-bold text-lg leading-6 tracking-[1.9px] text-center">{file.title}</p>
                 <a target="_blank" href={file.src}
