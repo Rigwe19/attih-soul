@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { IoMdClose } from 'react-icons/io'
 import Button from './button'
 import { useEffect } from 'react'
+import { Portal } from 'react-portal'
 
 interface BookModalProps {
     isOpen: boolean
@@ -16,9 +17,10 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
             window.document.body.style.overflow = 'auto'
         }
     }, [isOpen]);
-    if (!isOpen) return null
+    // if (!isOpen) return null
 
     return (
+        <Portal>
         <AnimatePresence>
             {isOpen && (
                 <>
@@ -26,13 +28,13 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/60 z-50"
+                        className="fixed inset-0 bg-black/80 z-50"
                         onClick={onClose}
                     />
                     <motion.div
-                        initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                        initial={{ scale: 0.5, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                        exit={{ scale: 0.5, opacity: 0, y: -20 }}
                         transition={{ duration: 0.2 }}
                         className="fixed left-[50%] top-[50%] z-50 translate-x-[-50%] translate-y-[-50%] overflow-auto h-[70vh] md:h-auto"
                     >
@@ -107,6 +109,7 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                 </>
             )}
         </AnimatePresence>
+        </Portal>
     )
 }
 

@@ -30,7 +30,7 @@ const Hero = () => {
                     <p className="text-xs leading-[23px] font-normal text-center md:text-left uppercase tracking-[2px]">
                         Attih Soul is a Nigerian singer, songwriter, guitarist, and Performing artist with a passion for soulful melodies
                     </p>
-                    <Button onClick={()=>setIsOpen(true)} className='font-bold border-white border'>
+                    <Button onClick={() => setIsOpen(true)} className='font-bold border-white border'>
                         BOOKINGS/INQUIRY
                     </Button>
                 </div>
@@ -42,9 +42,7 @@ const Hero = () => {
                 <Link viewTransition to="/music" className="uppercase text-white">Music Videos</Link>
                 <span className="uppercase text-white">SIGNUP</span>
             </div>
-            <Portal>
-                <BookModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-            </Portal>
+            <BookModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </div>
     );
 };
