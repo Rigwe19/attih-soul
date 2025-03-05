@@ -40,7 +40,7 @@ const Hero = () => {
             <div className="bg-gradient-to-b from-transparent via-black/79 to-black/85 absolute bottom-0 left-0 right-0 h-24"></div>
             <div className="flex justify-between items-center z-10 w-full absolute bottom-0 left-0 right-0 px-12 h-24">
                 <Link viewTransition to="/music" className="uppercase text-white">Music Videos</Link>
-                <span className="uppercase text-white">SIGNUP</span>
+                {/* <span className="uppercase text-white">SIGNUP</span> */}
             </div>
             <BookModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </div>
