@@ -28,8 +28,16 @@ const links: Link[] = [
     name: "Gallery",
   },
   {
+    link: "news",
+    name: "News",
+  },
+  {
     link: "merch",
     name: "Merch",
+  },
+  {
+    link: "new-release",
+    name: "New Release",
   },
   {
     link: "services",

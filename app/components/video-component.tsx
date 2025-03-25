@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 type Props = {
     file: {
@@ -9,25 +9,52 @@ type Props = {
 }
 
 const VideoComponent = ({ file }: Props) => {
-    const video = useRef<HTMLVideoElement>(null)
+    const videoRef = useRef<HTMLVideoElement>(null)
+    const [videoSrc, setVideoSrc] = useState<string|undefined>(undefined);
+    const [isVisible, setIsVisible] = useState(false);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true)
+                        observer.disconnect()
+                    }
+                })
+            },
+            { threshold: 0.1 }
+        );
+
+        if (videoRef.current) {
+            observer.observe(videoRef.current)
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (isVisible) {
+            setVideoSrc(file.video)
+        }
+    }, [isVisible, file.src]);
     const handlePlay = (status: 'play' | 'pause') => {
         if (status === 'play') {
-            video.current?.play()
+            videoRef.current?.play()
         } else {
-            video.current?.pause()
+            videoRef.current?.pause()
         }
     }
     const handleMobile = () => {
-      video.current?.play()
-      setTimeout(() => {
-        video.current?.pause()
-      }, 5000);
+        videoRef.current?.play()
+        setTimeout(() => {
+            videoRef.current?.pause()
+        }, 5000);
     }
-    
+
 
     return (
         <button className="relative w-full mb-4" onTouchStart={handleMobile} onMouseEnter={() => handlePlay('play')} onMouseLeave={() => handlePlay('pause')}>
-            <video className="w-full" ref={video} loop src={file.video} playsInline></video>
+            <video className="w-full" ref={videoRef} loop src={videoSrc} playsInline></video>
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 max-w-48 w-full gap-2 flex flex-col">
                 <p className="font-open font-bold text-lg leading-6 tracking-[1.9px] text-center">{file.title}</p>
                 <a target="_blank" href={file.src}

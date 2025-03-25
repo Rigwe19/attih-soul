@@ -4,7 +4,8 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  useNavigation
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -24,6 +25,8 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const navigation = useNavigation();
+  const isNavigating = Boolean(navigation.location);
   return (
     <html lang="en">
       <head>
@@ -33,7 +36,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="bg-black text-white">
+      <body
+        className="bg-black text-white w-full h-full overflow-y-auto bg-center bg-top bg-cover bg-fixed"
+        style={{
+          backgroundImage: 'url("/images/background.webp")',
+        }}>
+        {isNavigating && <div>Loading</div>}
         {children}
         <ScrollRestoration />
         <Scripts />

@@ -40,7 +40,7 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
         }
     }, [isOpen]);
 
-    const handleSubmit = async(e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         // Handle form submission here
         try {
@@ -102,12 +102,12 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                         >
                             <div className="relative flex flex-col gap-4 bg-black border border-neutral-800 p-6 shadow-xl w-[90vw] max-w-[962px]">
                                 {/* Header content remains the same */}
-                                
+
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div className="flex flex-col md:flex-row gap-2 md:gap-12 w-full">
                                         <div className="flex flex-col gap-2 md:gap-6 w-full">
                                             <label htmlFor="name" className="md:text-xl leading-6 tracking-[2px] tracking-[4.58px]">Name</label>
-                                            <input 
+                                            <input
                                                 type="text"
                                                 name="name"
                                                 value={formData.name}
@@ -117,7 +117,7 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                                         </div>
                                         <div className="flex flex-col gap-2 md:gap-6 w-full">
                                             <label htmlFor="email" className="md:text-xl leading-6 tracking-[2px] tracking-[4.58px]">Email</label>
-                                            <input 
+                                            <input
                                                 type="email"
                                                 name="email"
                                                 value={formData.email}
@@ -132,7 +132,7 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                                     <div className="flex flex-col md:flex-row gap-2 md:gap-12 w-full">
                                         <div className="flex flex-col gap-2 md:gap-6 w-full">
                                             <label htmlFor="eventServices" className="md:text-xl leading-6 tracking-[2px] tracking-[4.58px]">Event/Services</label>
-                                            <input 
+                                            <input
                                                 type="text"
                                                 name="eventServices"
                                                 value={formData.eventServices}
@@ -142,7 +142,7 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                                         </div>
                                         <div className="flex flex-col gap-2 md:gap-6 w-full">
                                             <label htmlFor="date" className="md:text-xl leading-6 tracking-[2px] tracking-[4.58px]">Date</label>
-                                            <input 
+                                            <input
                                                 type="date"
                                                 name="date"
                                                 value={formData.date}
@@ -155,7 +155,7 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                                     <div className="flex flex-col md:flex-row gap-2 md:gap-12 w-full">
                                         <div className="flex flex-col gap-2 md:gap-6 w-full">
                                             <label htmlFor="time" className="md:text-xl leading-6 tracking-[2px] tracking-[4.58px]">Time</label>
-                                            <input 
+                                            <input
                                                 type="time"
                                                 name="time"
                                                 value={formData.time}
@@ -165,7 +165,7 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                                         </div>
                                         <div className="flex flex-col gap-2 md:gap-6 w-full">
                                             <label htmlFor="location" className="md:text-xl leading-6 tracking-[2px] tracking-[4.58px]">Location</label>
-                                            <input 
+                                            <input
                                                 type="text"
                                                 name="location"
                                                 value={formData.location}
@@ -178,7 +178,7 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                                     <div className="flex flex-col md:flex-row gap-2 md:gap-12 w-full">
                                         <div className="flex flex-col gap-2 md:gap-6 w-full">
                                             <label htmlFor="budget" className="md:text-xl leading-6 tracking-[2px] tracking-[4.58px]">Budget</label>
-                                            <input 
+                                            <input
                                                 type="text"
                                                 name="budget"
                                                 value={formData.budget}
@@ -188,11 +188,12 @@ const BookModal = ({ isOpen, onClose }: BookModalProps) => {
                                         </div>
                                         <div className="flex flex-col gap-2 md:gap-6 w-full">
                                             <label htmlFor="message" className="md:text-xl leading-6 tracking-[2px] tracking-[4.58px]">Message</label>
-                                            <input 
-                                                type="text"
+                                            <textarea
+                                                rows={6}
                                                 name="message"
                                                 value={formData.message}
-                                                onChange={handleChange}
+                                                onChange={e=>setFormData(pv=>({...pv, message: e.target.value}))}
+                                                // onChange={handleChange}
                                                 className="border border-[#4E4E4E] py-2 focus-visible:outline-0 placeholder:text-neutral-300"
                                             />
                                         </div>

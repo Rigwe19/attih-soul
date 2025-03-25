@@ -31,7 +31,7 @@ const Nav: React.FC<Props> = ({ home = false }) => {
                             animate={{ x: 0 }}
                             exit={{ x: "-100%" }}
                             transition={{ type: "tween", duration: 0.3 }}
-                            className="fixed top-0 left-0 w-4/5 md:w-[424px] flex-col flex md:px-[55px] h-full bg-black shadow-lg z-50 gap-[23px]"
+                            className="fixed top-0 left-0 w-4/5 h-screen overflow-auto md:w-[424px] flex-col flex md:px-[55px] h-full bg-black shadow-lg z-50 gap-[23px]"
                         >
                             <nav className="p-4">
                                 <ul className="space-y-2 text-[24px] flex flex-col gap-[9px] overflow-y-auto">

@@ -1,6 +1,7 @@
 'use client';
 import { motion, useTransform, useScroll, useDragControls } from "framer-motion";
 import { useRef } from "react";
+import Image from "./image";
 
 const VideoSlider = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -35,12 +36,12 @@ const VideoSlider = () => {
                             className="h-[253px] md:h-[534px] bg-center mx-4 relative cursor-grab bg-no-repeat bg-contain active:cursor-grabbing flex items-center justify-center flex-shrink-0"
                             // whileHover={{ scale: 1.02 }}
                             // whileTap={{ scale: 0.98 }}
-                            style={{ backgroundImage: `url(/images/gallery/gallery${item}.jpg)`, border: '2px dashed #ffffff' }}
+                            style={{ border: '2px dashed #ffffff' }}
                         >
                             <div className="absolute inset-0 bg-[#1E1E1E99]" />
-                            <img
-                                src={`/images/gallery/gallery${item}.jpg`}
-                                className="h-[253px] md:h-[534px] w-auto invisible"
+                            <Image
+                                src={`/images/gallery/gallery${item}.webp`}
+                                className="h-[253px] md:h-[534px] w-auto"
                                 alt={`Gallery ${item}`}
                             />
                         </motion.div>

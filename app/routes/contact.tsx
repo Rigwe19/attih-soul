@@ -68,7 +68,7 @@ const Contact = () => {
     return (
         <div className="bg-white text-black">
             <div className="h-[774px]" style={{
-                backgroundImage: 'url("/images/contact.jpg")',
+                backgroundImage: 'url("/images/contact.webp")',
             }}>
                 <Nav home />
             </div>

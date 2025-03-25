@@ -10,4 +10,6 @@ export default [
   route("about", "./routes/about.tsx"),
   route("contact", "./routes/contact.tsx"),
   route("merch", "./routes/merch.tsx"),
+  route("news", "./routes/news.tsx"),
+  route("new-release", "./routes/new-release.tsx"),
 ] satisfies RouteConfig;
